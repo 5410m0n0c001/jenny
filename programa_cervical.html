@@ -1,56 +1,62 @@
 <title>Programa de Reacondicionamiento — Protocolo Cervical</title>
 <style>
   :root{
-    --bg:#faf6f0;
+    --bg:#fff6f2;
     --bg-elevated:#ffffff;
-    --ink:#241f1a;
-    --ink-soft:#5b5147;
-    --ink-faint:#8a7f70;
-    --border:#e4dac9;
-    --accent:#2f5d53;
-    --accent-soft:#e4eeea;
-    --warm:#b5482a;
-    --warm-soft:#f5e4db;
-    --go:#3f7a5c;
-    --go-soft:#e7f1ea;
-    --caution:#a8760e;
-    --caution-soft:#f6ebd8;
-    --stop:#a63d3d;
-    --stop-soft:#f5e1e0;
-    --shadow: 0 1px 2px rgba(36,31,26,0.06), 0 4px 16px rgba(36,31,26,0.05);
+    --ink:#341b30;
+    --ink-soft:#7a5872;
+    --ink-faint:#b191ab;
+    --border:#ffdce8;
+    --accent:#ff3e82;
+    --accent-soft:#ffe1ec;
+    --warm:#ff8a3d;
+    --warm-soft:#ffe7d1;
+    --go:#0eb37f;
+    --go-soft:#d9f7ea;
+    --violet:#8b4fe0;
+    --violet-soft:#ede3fc;
+    --caution:#e6a417;
+    --caution-soft:#fdf0d2;
+    --stop:#ff4d4d;
+    --stop-soft:#ffe1e1;
+    --shadow: 0 2px 6px rgba(255,62,130,0.08), 0 10px 28px rgba(255,62,130,0.10);
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg:#1b1815;
-      --bg-elevated:#242019;
-      --ink:#f0eae0;
-      --ink-soft:#b8ac9c;
-      --ink-faint:#8a7f6e;
-      --border:#3a342c;
-      --accent:#7fc4ae;
-      --accent-soft:#22332e;
-      --warm:#e08862;
-      --warm-soft:#3a241c;
-      --go:#7fc9a0;
-      --go-soft:#1f3327;
-      --caution:#e0b667;
-      --caution-soft:#3a2f1a;
-      --stop:#e08080;
-      --stop-soft:#3a2020;
-      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 20px rgba(0,0,0,0.35);
+      --bg:#241129;
+      --bg-elevated:#331a3a;
+      --ink:#fbeef7;
+      --ink-soft:#dbb3d4;
+      --ink-faint:#9c76a0;
+      --border:#4c2557;
+      --accent:#ff6fa8;
+      --accent-soft:#4a1f3d;
+      --warm:#ffa262;
+      --warm-soft:#4a2e14;
+      --go:#3ddba0;
+      --go-soft:#123a2c;
+      --violet:#c79eff;
+      --violet-soft:#3a2450;
+      --caution:#ffc24d;
+      --caution-soft:#4a3712;
+      --stop:#ff8080;
+      --stop-soft:#4a1f1f;
+      --shadow: 0 2px 6px rgba(0,0,0,0.35), 0 10px 30px rgba(0,0,0,0.4);
     }
   }
   :root[data-theme="dark"]{
-    --bg:#1b1815; --bg-elevated:#242019; --ink:#f0eae0; --ink-soft:#b8ac9c; --ink-faint:#8a7f6e;
-    --border:#3a342c; --accent:#7fc4ae; --accent-soft:#22332e; --warm:#e08862; --warm-soft:#3a241c;
-    --go:#7fc9a0; --go-soft:#1f3327; --caution:#e0b667; --caution-soft:#3a2f1a; --stop:#e08080; --stop-soft:#3a2020;
-    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 20px rgba(0,0,0,0.35);
+    --bg:#241129; --bg-elevated:#331a3a; --ink:#fbeef7; --ink-soft:#dbb3d4; --ink-faint:#9c76a0;
+    --border:#4c2557; --accent:#ff6fa8; --accent-soft:#4a1f3d; --warm:#ffa262; --warm-soft:#4a2e14;
+    --go:#3ddba0; --go-soft:#123a2c; --violet:#c79eff; --violet-soft:#3a2450;
+    --caution:#ffc24d; --caution-soft:#4a3712; --stop:#ff8080; --stop-soft:#4a1f1f;
+    --shadow: 0 2px 6px rgba(0,0,0,0.35), 0 10px 30px rgba(0,0,0,0.4);
   }
   :root[data-theme="light"]{
-    --bg:#faf6f0; --bg-elevated:#ffffff; --ink:#241f1a; --ink-soft:#5b5147; --ink-faint:#8a7f70;
-    --border:#e4dac9; --accent:#2f5d53; --accent-soft:#e4eeea; --warm:#b5482a; --warm-soft:#f5e4db;
-    --go:#3f7a5c; --go-soft:#e7f1ea; --caution:#a8760e; --caution-soft:#f6ebd8; --stop:#a63d3d; --stop-soft:#f5e1e0;
-    --shadow: 0 1px 2px rgba(36,31,26,0.06), 0 4px 16px rgba(36,31,26,0.05);
+    --bg:#fff6f2; --bg-elevated:#ffffff; --ink:#341b30; --ink-soft:#7a5872; --ink-faint:#b191ab;
+    --border:#ffdce8; --accent:#ff3e82; --accent-soft:#ffe1ec; --warm:#ff8a3d; --warm-soft:#ffe7d1;
+    --go:#0eb37f; --go-soft:#d9f7ea; --violet:#8b4fe0; --violet-soft:#ede3fc;
+    --caution:#e6a417; --caution-soft:#fdf0d2; --stop:#ff4d4d; --stop-soft:#ffe1e1;
+    --shadow: 0 2px 6px rgba(255,62,130,0.08), 0 10px 28px rgba(255,62,130,0.10);
   }
 
   *{box-sizing:border-box;}
@@ -58,14 +64,16 @@
     margin:0;
     background:var(--bg);
     color:var(--ink);
-    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Segoe UI", "Trebuchet MS", -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
   }
-  .doc{max-width:920px;margin:0 auto;padding:2.5rem 1.5rem 6rem;}
+  .doc{max-width:920px;margin:0 auto;padding:2rem 1.5rem 6rem;}
 
   h1,h2,h3,h4{
-    font-family: Georgia, "Iowan Old Style", Charter, "Times New Roman", serif;
+    font-family: "Segoe UI Semibold", "Trebuchet MS", -apple-system, Roboto, sans-serif;
+    font-weight:700;
+    letter-spacing:-.01em;
     color:var(--ink);
     text-wrap:balance;
     margin:0;
@@ -73,57 +81,73 @@
 
   /* ---------- Header ---------- */
   .masthead{
-    display:flex; flex-direction:column; gap:.65rem;
-    padding-bottom:1.75rem; margin-bottom:1.75rem;
-    border-bottom:2px solid var(--border);
+    position:relative; overflow:hidden;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--warm) 100%);
+    border-radius:26px;
+    padding:2.25rem 2rem;
+    margin-bottom:1.75rem;
+    box-shadow: var(--shadow);
   }
+  .masthead::before, .masthead::after{
+    content:""; position:absolute; border-radius:50%; filter:blur(38px); opacity:.4; background:#fff;
+  }
+  .masthead::before{width:230px; height:230px; top:-90px; right:-70px;}
+  .masthead::after{width:170px; height:170px; bottom:-80px; left:8%;}
+  .masthead-inner{position:relative; z-index:1; display:flex; flex-direction:column; gap:.65rem;}
   .eyebrow{
     font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--accent); font-weight:600;
+    font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
+    color:#fff; font-weight:700;
+    background:rgba(255,255,255,0.22); display:inline-block;
+    padding:.3rem .7rem; border-radius:100px; width:fit-content;
   }
-  .masthead h1{font-size:2.1rem; font-weight:600; line-height:1.15;}
-  .masthead .sub{color:var(--ink-soft); font-size:1.02rem; max-width:60ch;}
+  .masthead h1{font-size:2.15rem; font-weight:800; line-height:1.15; color:#fff;}
+  .masthead .sub{color:rgba(255,255,255,0.94); font-size:1.02rem; max-width:60ch;}
   .profile-row{
     display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.4rem;
   }
   .pill{
-    font-size:.82rem; padding:.28rem .7rem; border-radius:100px;
-    background:var(--bg-elevated); border:1px solid var(--border); color:var(--ink-soft);
+    font-size:.82rem; padding:.32rem .8rem; border-radius:100px;
+    background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.4); color:#fff;
+    font-weight:600;
     font-variant-numeric: tabular-nums;
   }
 
   /* ---------- Stat bar ---------- */
   .stat-bar{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:1px; background:var(--border);
-    border:1px solid var(--border); border-radius:12px; overflow:hidden;
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:.75rem;
     margin-bottom:2rem;
   }
   .stat{
-    background:var(--bg-elevated); padding:.9rem 1rem;
-    display:flex; flex-direction:column; gap:.2rem;
+    border-radius:16px; padding:1rem 1.1rem;
+    display:flex; flex-direction:column; gap:.25rem;
   }
-  .stat .label{font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint);}
-  .stat .value{font-size:1.15rem; font-weight:600; font-variant-numeric:tabular-nums; color:var(--accent);}
+  .stat:nth-child(5n+1){background:var(--accent-soft);} .stat:nth-child(5n+1) .value{color:var(--accent);}
+  .stat:nth-child(5n+2){background:var(--warm-soft);} .stat:nth-child(5n+2) .value{color:var(--warm);}
+  .stat:nth-child(5n+3){background:var(--go-soft);} .stat:nth-child(5n+3) .value{color:var(--go);}
+  .stat:nth-child(5n+4){background:var(--violet-soft);} .stat:nth-child(5n+4) .value{color:var(--violet);}
+  .stat:nth-child(5n+5){background:var(--caution-soft);} .stat:nth-child(5n+5) .value{color:var(--caution);}
+  .stat .label{font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:600;}
+  .stat .value{font-size:1.18rem; font-weight:800; font-variant-numeric:tabular-nums;}
 
   /* ---------- Section ---------- */
   section{margin-bottom:2.75rem;}
   .section-head{display:flex; align-items:baseline; gap:.6rem; margin-bottom:1rem;}
-  .section-head h2{font-size:1.4rem; font-weight:600;}
+  .section-head h2{font-size:1.4rem; font-weight:800;}
   .section-num{
-    font-family: ui-monospace, monospace; font-size:.78rem; color:var(--ink-faint);
-    border:1px solid var(--border); border-radius:6px; padding:.15rem .45rem;
+    font-family: ui-monospace, monospace; font-size:.78rem; font-weight:700; color:var(--accent);
+    background:var(--accent-soft); border:1px solid var(--accent); border-radius:8px; padding:.18rem .5rem;
   }
   .section-desc{color:var(--ink-soft); font-size:.96rem; max-width:68ch; margin:0 0 1.1rem;}
 
   /* ---------- Callouts ---------- */
   .callout{
-    border-radius:10px; padding:1rem 1.15rem; border:1px solid;
-    display:flex; gap:.75rem; margin-bottom:.85rem;
+    border-radius:16px; padding:1.05rem 1.2rem; border:1.5px solid;
+    display:flex; gap:.75rem; margin-bottom:.85rem; box-shadow:var(--shadow);
   }
-  .callout .dot{width:.6rem;height:.6rem;border-radius:50%;flex:none;margin-top:.4rem;}
-  .callout h4{font-size:.95rem; font-weight:700; margin-bottom:.3rem; font-family:inherit;}
+  .callout .dot{width:.65rem;height:.65rem;border-radius:50%;flex:none;margin-top:.4rem;}
+  .callout h4{font-size:.95rem; font-weight:800; margin-bottom:.3rem; font-family:inherit;}
   .callout p, .callout ul{margin:0; font-size:.92rem; color:var(--ink-soft);}
   .callout ul{padding-left:1.1rem;}
   .callout li{margin-bottom:.15rem;}
@@ -143,59 +167,70 @@
 
   /* ---------- Tabs ---------- */
   .tabbar{
-    display:flex; gap:.35rem; flex-wrap:wrap;
-    border-bottom:1px solid var(--border); padding-bottom:0; margin-bottom:1.25rem;
+    display:flex; gap:.5rem; flex-wrap:wrap;
+    margin-bottom:1.4rem;
   }
   .tab-btn{
-    font-family:inherit; font-size:.88rem; font-weight:600; color:var(--ink-faint);
-    background:none; border:none; border-bottom:2px solid transparent;
-    padding:.55rem .2rem; margin-right:1.1rem; cursor:pointer;
+    font-family:inherit; font-size:.85rem; font-weight:700; color:var(--ink-soft);
+    background:var(--bg-elevated); border:1.5px solid var(--border); border-radius:100px;
+    padding:.5rem 1.1rem; cursor:pointer; transition:transform .12s ease;
   }
-  .tab-btn:hover{color:var(--ink);}
-  .tab-btn.active{color:var(--accent); border-bottom-color:var(--accent);}
-  .tab-btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:3px;}
+  .tab-btn:hover{color:var(--ink); transform:translateY(-1px);}
+  .tab-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
   .tab-panel{display:none;}
   .tab-panel.active{display:block;}
 
+  .tab-btn:nth-child(5n+1).active{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .tab-btn:nth-child(5n+2).active{background:var(--warm-soft); border-color:var(--warm); color:var(--warm);}
+  .tab-btn:nth-child(5n+3).active{background:var(--go-soft); border-color:var(--go); color:var(--go);}
+  .tab-btn:nth-child(5n+4).active{background:var(--violet-soft); border-color:var(--violet); color:var(--violet);}
+  .tab-btn:nth-child(5n+5).active{background:var(--caution-soft); border-color:var(--caution); color:var(--caution);}
+
+  .day-pink{ --day:var(--accent); --day-soft:var(--accent-soft); }
+  .day-orange{ --day:var(--warm); --day-soft:var(--warm-soft); }
+  .day-mint{ --day:var(--go); --day-soft:var(--go-soft); }
+  .day-violet{ --day:var(--violet); --day-soft:var(--violet-soft); }
+  .day-gold{ --day:var(--caution); --day-soft:var(--caution-soft); }
+
   .day-tag{
-    font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
-    color:var(--ink-faint);
+    font-size:.76rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--day, var(--ink-faint));
   }
-  .day-title{font-size:1.18rem; font-weight:600; margin:.15rem 0 1rem;}
+  .day-title{font-size:1.2rem; font-weight:800; margin:.15rem 0 1rem;}
 
   /* ---------- Tables ---------- */
-  .table-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:10px; margin-bottom:1rem; background:var(--bg-elevated);}
+  .table-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:14px; margin-bottom:1rem; background:var(--bg-elevated); box-shadow:var(--shadow);}
   table{width:100%; border-collapse:collapse; font-size:.9rem; min-width:520px;}
   thead th{
     text-align:left; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em;
-    color:var(--ink-faint); font-weight:600; padding:.6rem .8rem; border-bottom:1px solid var(--border);
+    color:var(--ink-faint); font-weight:700; padding:.6rem .8rem; border-bottom:1px solid var(--border);
   }
   tbody td{padding:.62rem .8rem; border-bottom:1px solid var(--border); color:var(--ink-soft);}
   tbody tr:last-child td{border-bottom:none;}
   td.num, th.num{font-variant-numeric:tabular-nums; font-family:ui-monospace,monospace; color:var(--ink);}
-  td.ex-name{color:var(--ink); font-weight:500;}
-  .flag{display:inline-flex; align-items:center; gap:.3rem; font-size:.78rem; color:var(--stop); font-weight:600;}
+  td.ex-name{color:var(--ink); font-weight:600;}
+  .flag{display:inline-flex; align-items:center; gap:.3rem; font-size:.78rem; color:var(--stop); font-weight:700;}
   .flag::before{content:"⚠"; font-size:.85rem;}
 
   .block-label{
-    font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
-    color:var(--accent); margin:1.15rem 0 .5rem;
+    font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--day, var(--accent)); margin:1.15rem 0 .5rem;
   }
   .note{font-size:.86rem; color:var(--ink-faint); margin-top:-.3rem; margin-bottom:.9rem;}
 
   /* ---------- Meal cards ---------- */
   .meal-slot{margin-bottom:1.3rem;}
   .meal-slot-head{display:flex; align-items:center; gap:.5rem; margin-bottom:.55rem;}
-  .meal-slot-head h4{font-size:1rem; font-weight:600; font-family:inherit;}
+  .meal-slot-head h4{font-size:1rem; font-weight:700; font-family:inherit;}
   .meal-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.7rem;}
   .alt-card{
-    background:var(--bg-elevated); border:1px solid var(--border); border-radius:10px;
-    padding:.85rem .95rem; box-shadow:var(--shadow);
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:14px;
+    padding:.9rem 1rem; box-shadow:var(--shadow);
   }
   .alt-letter{
     display:inline-flex; align-items:center; justify-content:center;
-    width:1.4rem; height:1.4rem; border-radius:50%; background:var(--warm-soft); color:var(--warm);
-    font-size:.74rem; font-weight:700; margin-bottom:.5rem;
+    width:1.5rem; height:1.5rem; border-radius:50%; background:var(--day-soft, var(--warm-soft)); color:var(--day, var(--warm));
+    font-size:.74rem; font-weight:800; margin-bottom:.5rem;
   }
   .alt-card ul{margin:0; padding-left:1.05rem; font-size:.87rem; color:var(--ink-soft);}
   .alt-card li{margin-bottom:.15rem;}
@@ -203,17 +238,54 @@
   /* ---------- Progression ---------- */
   .prog-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:.85rem;}
   .prog-card{
-    background:var(--bg-elevated); border:1px solid var(--border); border-radius:10px; padding:1rem;
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:16px; padding:1.1rem;
+    box-shadow:var(--shadow);
   }
+  .prog-card:nth-child(1){border-top:3px solid var(--accent);}
+  .prog-card:nth-child(2){border-top:3px solid var(--violet);}
+  .prog-card:nth-child(3){border-top:3px solid var(--go);}
   .prog-card .wk{font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); font-weight:700;}
-  .prog-card .rir{font-size:1.5rem; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; margin:.25rem 0;}
+  .prog-card .rir{font-size:1.6rem; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums; margin:.25rem 0;}
+  .prog-card:nth-child(2) .rir{color:var(--violet);}
+  .prog-card:nth-child(3) .rir{color:var(--go);}
   .prog-card p{margin:0; font-size:.85rem; color:var(--ink-soft);}
+
+  /* ---------- Priority ladder ---------- */
+  .rank-list{display:flex; flex-direction:column; gap:.6rem; margin-bottom:1.4rem;}
+  .rank-row{
+    display:flex; align-items:flex-start; gap:.9rem; background:var(--bg-elevated);
+    border:1px solid var(--border); border-radius:14px; padding:.8rem 1.05rem; box-shadow:var(--shadow);
+  }
+  .rank-chip{
+    flex:none; width:2rem; height:2rem; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:.9rem; font-variant-numeric:tabular-nums;
+  }
+  .rank-row:nth-child(5n+1) .rank-chip{background:var(--accent-soft); color:var(--accent);}
+  .rank-row:nth-child(5n+2) .rank-chip{background:var(--warm-soft); color:var(--warm);}
+  .rank-row:nth-child(5n+3) .rank-chip{background:var(--go-soft); color:var(--go);}
+  .rank-row:nth-child(5n+4) .rank-chip{background:var(--violet-soft); color:var(--violet);}
+  .rank-row:nth-child(5n+5) .rank-chip{background:var(--caution-soft); color:var(--caution);}
+  .rank-row h4{font-size:.98rem; font-weight:800; margin-bottom:.15rem; font-family:inherit;}
+  .rank-row p{margin:0; font-size:.87rem; color:var(--ink-soft);}
+
+  .supp-card{
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:16px;
+    padding:1.15rem 1.25rem; margin-bottom:1rem; box-shadow:var(--shadow);
+  }
+  .supp-card-head{display:flex; align-items:center; gap:.6rem; margin-bottom:.6rem;}
+  .supp-card-head .rank-chip{width:1.7rem; height:1.7rem; font-size:.8rem;}
+  .supp-card-head h3{font-size:1.08rem; font-weight:800;}
+  .supp-card .why{font-size:.9rem; color:var(--ink-soft); margin:0 0 .8rem;}
+
+  .src-list{font-size:.78rem; color:var(--ink-faint); margin:1rem 0 0; padding-left:1.1rem;}
+  .src-list li{margin-bottom:.2rem;}
+  .src-list a{color:var(--ink-faint);}
 
   /* ---------- Checklist ---------- */
   .check-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.6rem;}
   .check-item{
     display:flex; align-items:center; gap:.55rem; background:var(--bg-elevated);
-    border:1px solid var(--border); border-radius:8px; padding:.6rem .75rem; font-size:.88rem; color:var(--ink-soft);
+    border:1px solid var(--border); border-radius:12px; padding:.6rem .75rem; font-size:.88rem; color:var(--ink-soft);
   }
   .check-item input{accent-color:var(--accent); width:1rem; height:1rem;}
 
@@ -233,15 +305,17 @@
 <div class="doc">
 
   <div class="masthead">
-    <span class="eyebrow">Programa individual · Protocolo columna cervical</span>
-    <h1>Reacondicionamiento con cuidado cervical</h1>
-    <p class="sub">Semana 1 de calibración — fuerza, movilidad y nutrición mexicana, diseñado alrededor de un antecedente de lesión cervical sin diagnóstico específico confirmado.</p>
-    <div class="profile-row">
-      <span class="pill">Mujer · 45 años</span>
-      <span class="pill">1.48 m · 65 kg</span>
-      <span class="pill">IMC ≈ 29.7</span>
-      <span class="pill">Entrena L–V · 7:00–8:30</span>
-      <span class="pill">Objetivo: oxidar grasa + estabilizar columna</span>
+    <div class="masthead-inner">
+      <span class="eyebrow">Programa individual · Protocolo columna cervical</span>
+      <h1>Reacondicionamiento con cuidado cervical</h1>
+      <p class="sub">Semana 1 de calibración — fuerza, movilidad y nutrición mexicana, diseñado alrededor de un antecedente de lesión cervical sin diagnóstico específico confirmado.</p>
+      <div class="profile-row">
+        <span class="pill">Mujer · 45 años</span>
+        <span class="pill">1.48 m · 65 kg</span>
+        <span class="pill">IMC ≈ 29.7</span>
+        <span class="pill">Entrena L–V · 7:00–8:30</span>
+        <span class="pill">Objetivo: oxidar grasa + estabilizar columna</span>
+      </div>
     </div>
   </div>
 
@@ -320,7 +394,7 @@
     </div>
 
     <!-- LUNES -->
-    <div class="tab-panel active" id="train-lun">
+    <div class="tab-panel active day-pink" id="train-lun">
       <span class="day-tag">Día 1</span>
       <h3 class="day-title">Tren inferior + glúteo</h3>
       <div class="block-label">Calentamiento — 10 min</div>
@@ -346,7 +420,7 @@
     </div>
 
     <!-- MARTES -->
-    <div class="tab-panel" id="train-mar">
+    <div class="tab-panel day-orange" id="train-mar">
       <span class="day-tag">Día 2</span>
       <h3 class="day-title">Espalda + pecho + brazos</h3>
       <p class="note">Día de mayor riesgo cervical — priorizar máquinas con apoyo sobre movimientos libres.</p>
@@ -368,7 +442,7 @@
     </div>
 
     <!-- MIERCOLES -->
-    <div class="tab-panel" id="train-mie">
+    <div class="tab-panel day-mint" id="train-mie">
       <span class="day-tag">Día 3</span>
       <h3 class="day-title">Recuperación activa</h3>
       <p class="note">No es un día de gimnasio pesado — el objetivo es circulación, movilidad y respiración, a intensidad que permita conversar.</p>
@@ -386,7 +460,7 @@
     </div>
 
     <!-- JUEVES -->
-    <div class="tab-panel" id="train-jue">
+    <div class="tab-panel day-violet" id="train-jue">
       <span class="day-tag">Día 4</span>
       <h3 class="day-title">Pierna + glúteo</h3>
       <div class="table-wrap">
@@ -407,7 +481,7 @@
     </div>
 
     <!-- VIERNES -->
-    <div class="tab-panel" id="train-vie">
+    <div class="tab-panel day-gold" id="train-vie">
       <span class="day-tag">Día 5</span>
       <h3 class="day-title">Cuerpo completo</h3>
       <div class="table-wrap">
@@ -479,7 +553,7 @@
     </div>
 
     <!-- LUNES -->
-    <div class="tab-panel active" id="food-lun">
+    <div class="tab-panel active day-pink" id="food-lun">
       <div class="meal-slot">
         <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
         <div class="meal-grid">
@@ -507,7 +581,7 @@
     </div>
 
     <!-- MARTES -->
-    <div class="tab-panel" id="food-mar">
+    <div class="tab-panel day-orange" id="food-mar">
       <div class="meal-slot">
         <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
         <div class="meal-grid">
@@ -535,7 +609,7 @@
     </div>
 
     <!-- MIERCOLES -->
-    <div class="tab-panel" id="food-mie">
+    <div class="tab-panel day-mint" id="food-mie">
       <div class="meal-slot">
         <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
         <div class="meal-grid">
@@ -563,7 +637,7 @@
     </div>
 
     <!-- JUEVES -->
-    <div class="tab-panel" id="food-jue">
+    <div class="tab-panel day-violet" id="food-jue">
       <div class="meal-slot">
         <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
         <div class="meal-grid">
@@ -591,7 +665,7 @@
     </div>
 
     <!-- VIERNES -->
-    <div class="tab-panel" id="food-vie">
+    <div class="tab-panel day-gold" id="food-vie">
       <div class="meal-slot">
         <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
         <div class="meal-grid">
@@ -619,10 +693,135 @@
     </div>
   </section>
 
-  <!-- ================= TRACKING ================= -->
+  <!-- ================= SUPPLEMENTS ================= -->
   <section>
     <div class="section-head">
       <span class="section-num">05</span>
+      <h2>Kit de inicio de suplementación</h2>
+    </div>
+    <p class="section-desc">Ningún suplemento sustituye la comida real ni el déficit calórico — son ayuda, no la base. Orden de prioridad: si el presupuesto o el paladar obligan a elegir, se empieza arriba de la lista y se agrega hacia abajo.</p>
+
+    <div class="rank-list">
+      <div class="rank-row">
+        <span class="rank-chip">1</span>
+        <div><h4>Proteína aislada (WPI)</h4><p>Es lo que más cierra la meta de 90–105 g de proteína/día sin sumar grasas ni azúcares de más. La pieza que más rinde para el objetivo de oxidar grasa conservando músculo.</p></div>
+      </div>
+      <div class="rank-row">
+        <span class="rank-chip">2</span>
+        <div><h4>Creatina monohidratada</h4><p>El suplemento con más evidencia científica acumulada para fuerza y recuperación. Barata por dosis y segura a largo plazo en dosis estándar.</p></div>
+      </div>
+      <div class="rank-row">
+        <span class="rank-chip">3</span>
+        <div><h4>Barras de proteína</h4><p>Herramienta de conveniencia para un día saturado — no para sustituir comida, arroz/frijol/pollo real siempre gana.</p></div>
+      </div>
+      <div class="rank-row">
+        <span class="rank-chip">4</span>
+        <div><h4>Aminoácidos BCAA / EAA</h4><p>Opcional. Solo aporta algo extra si entrena en ayunas o quiere variedad de sabor/hidratación — si la proteína diaria ya se cumple, no es indispensable.</p></div>
+      </div>
+      <div class="rank-row">
+        <span class="rank-chip">5</span>
+        <div><h4>Termogénico</h4><p>El de menor prioridad y el que exige más cautela — ver aviso abajo antes de considerarlo.</p></div>
+      </div>
+    </div>
+
+    <div class="supp-card">
+      <div class="supp-card-head"><span class="rank-chip">1</span><h3>Proteína aislada (WPI)</h3></div>
+      <p class="why">Buscar aislado (no solo concentrado) con más de 90% de proteína por porción y etiqueta limpia (sin "amino spiking").</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Por qué</th><th>Presentación grande sugerida</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Birdman</td><td>Marca mexicana señalada por PROFECO como mejor relación calidad-precio, con contenido proteico real acorde a etiqueta</td><td>Verificar bolsa de 900 g–2 kg en tienda</td></tr>
+            <tr><td class="ex-name">Optimum Nutrition Gold Standard 100% Isolate</td><td>Resultados sólidos en evaluación de PROFECO; disponibilidad amplia en México (GNC y tiendas especializadas)</td><td>Bolsa de 5 lb (2.27 kg)</td></tr>
+            <tr><td class="ex-name">Dymatize ISO100</td><td>Aislado hidrolizado de absorción rápida, opción popular para post-entreno</td><td>Bolsa de 5 lb (2.27 kg)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">1 scoop (≈25–30 g de proteína) después de entrenar, disuelto en agua o leche descremada.</p>
+    </div>
+
+    <div class="supp-card">
+      <div class="supp-card-head"><span class="rank-chip">2</span><h3>Creatina monohidratada</h3></div>
+      <p class="why">El único ingrediente en la etiqueta debe ser creatina monohidratada — sin mezclas ni "complejos" de por medio.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Por qué</th><th>Presentación grande sugerida</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Bulk Supplements</td><td>Creatina pura sin sabor ni relleno, la opción de mejor rendimiento por peso para uso prolongado</td><td>Bote de 1 kg</td></tr>
+            <tr><td class="ex-name">Optimum Nutrition Creatine Powder</td><td>Usa Creapure (pureza verificable >99.9%), amplia disponibilidad en GNC México</td><td>Bote de 600 g</td></tr>
+            <tr><td class="ex-name">Valara</td><td>Marca mexicana con análisis de laboratorio externo publicado — opción local transparente</td><td>Consultar presentación disponible</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">3–5 g diarios, cualquier hora del día, mezclada con agua o con el batido de proteína post-entreno. No requiere fase de carga.</p>
+    </div>
+
+    <div class="supp-card">
+      <div class="supp-card-head"><span class="rank-chip">3</span><h3>Barras de proteína</h3></div>
+      <p class="why">PROFECO encontró que muchas barras "fitness" traen más azúcar que proteína real — revisar etiqueta, no el empaque.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Por qué</th><th>Presentación grande sugerida</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Quest</td><td>Mejor evaluada por PROFECO: más de 20 g de proteína y bajo azúcar añadido</td><td>Caja de 12 unidades</td></tr>
+            <tr><td class="ex-name">Pure Protein</td><td>Buen aporte de proteína con menor densidad calórica que la competencia</td><td>Caja de 12 unidades</td></tr>
+            <tr><td class="ex-name">Think!</td><td>Combinación proteína + fibra, mayor saciedad</td><td>Caja de 10–12 unidades</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Como snack de rescate en un día saturado — no como reemplazo habitual de comida o cena.</p>
+    </div>
+
+    <div class="supp-card">
+      <div class="supp-card-head"><span class="rank-chip">4</span><h3>Aminoácidos BCAA / EAA</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Por qué</th><th>Presentación grande sugerida</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Scivation Xtend BCAA</td><td>Formula completa, buena reputación de sabor, rinde para uso prolongado</td><td>Bote de 405 g (30 porciones)</td></tr>
+            <tr><td class="ex-name">Forzagen</td><td>Marca mexicana, EAA completos + glutamina en una sola mezcla</td><td>Consultar presentación disponible</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Si se usa, durante el entrenamiento (7:00–8:30) mezclado con agua. Prescindible si la proteína diaria ya se cumple con comida + WPI.</p>
+    </div>
+
+    <div class="supp-card">
+      <div class="supp-card-head"><span class="rank-chip">5</span><h3>Termogénico</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Marca</th><th>Ingredientes clave</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Nutrex Lipo-6</td><td>Cafeína + complejo termogénico</td></tr>
+            <tr><td class="ex-name">Amix ThermoCore</td><td>Cafeína, té verde, cayena</td></tr>
+            <tr><td class="ex-name">Dymatize Ampli Fire</td><td>Cafeína anhidra + soporte metabólico</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout callout--caution">
+      <span class="dot"></span>
+      <div>
+        <h4>Antes de considerar el termogénico</h4>
+        <p>Ya hay café en el pre-entreno de 6:20–6:40. Sumar un termogénico con cafeína el mismo día duplica el estimulante — riesgo de taquicardia, ansiedad o mal sueño en alguien que entrena a las 7:00 a. m. Si se agrega: nunca el mismo día que el café pre-entreno, empezar con media dosis, y confirmar antes con un médico que no hay hipertensión, arritmia o ansiedad — es el suplemento de menor prioridad y el que más puede interactuar con la salud general, no con la columna cervical.</p>
+      </div>
+    </div>
+
+    <div class="block-label" style="margin-top:1.4rem;">Fuentes consultadas</div>
+    <ul class="src-list">
+      <li><a href="https://www.excelsior.com.mx/salud/profeco-revela-cual-es-proteina-mas-economica-y-mejor-evaluada-2026" target="_blank" rel="noopener">Excélsior — Profeco revela cuál es la proteína más económica y mejor evaluada</a></li>
+      <li><a href="https://www.excelsior.com.mx/salud/profeco-revela-cuales-son-mejores-barras-proteina-mercado" target="_blank" rel="noopener">Excélsior — Profeco revela cuáles son las mejores barras de proteína del mercado</a></li>
+      <li><a href="https://consumidores.com.mx/c/proteinas-whey/" target="_blank" rel="noopener">Consumidores.com.mx — Ranking Profeco de proteínas whey</a></li>
+      <li><a href="https://cellx.com.mx/blogs/news/mejor-creatina-mexico-2026-guia-evidencia" target="_blank" rel="noopener">CellX México — Mejor creatina en México</a></li>
+    </ul>
+    <p class="note" style="margin-top:.6rem;">Precios y presentaciones cambian con frecuencia — confirmar en tienda antes de comprar. Esto no sustituye valoración de un nutriólogo en consulta ni la revisión médica pendiente por la lesión cervical.</p>
+  </section>
+
+  <!-- ================= TRACKING ================= -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">06</span>
       <h2>Registro semanal</h2>
     </div>
     <p class="section-desc">Cada lunes por la mañana, antes de entrenar. La báscula sola no cuenta la historia completa.</p>
