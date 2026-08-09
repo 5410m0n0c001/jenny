@@ -1,0 +1,664 @@
+<title>Programa de Reacondicionamiento — Protocolo Cervical</title>
+<style>
+  :root{
+    --bg:#faf6f0;
+    --bg-elevated:#ffffff;
+    --ink:#241f1a;
+    --ink-soft:#5b5147;
+    --ink-faint:#8a7f70;
+    --border:#e4dac9;
+    --accent:#2f5d53;
+    --accent-soft:#e4eeea;
+    --warm:#b5482a;
+    --warm-soft:#f5e4db;
+    --go:#3f7a5c;
+    --go-soft:#e7f1ea;
+    --caution:#a8760e;
+    --caution-soft:#f6ebd8;
+    --stop:#a63d3d;
+    --stop-soft:#f5e1e0;
+    --shadow: 0 1px 2px rgba(36,31,26,0.06), 0 4px 16px rgba(36,31,26,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#1b1815;
+      --bg-elevated:#242019;
+      --ink:#f0eae0;
+      --ink-soft:#b8ac9c;
+      --ink-faint:#8a7f6e;
+      --border:#3a342c;
+      --accent:#7fc4ae;
+      --accent-soft:#22332e;
+      --warm:#e08862;
+      --warm-soft:#3a241c;
+      --go:#7fc9a0;
+      --go-soft:#1f3327;
+      --caution:#e0b667;
+      --caution-soft:#3a2f1a;
+      --stop:#e08080;
+      --stop-soft:#3a2020;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 20px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1b1815; --bg-elevated:#242019; --ink:#f0eae0; --ink-soft:#b8ac9c; --ink-faint:#8a7f6e;
+    --border:#3a342c; --accent:#7fc4ae; --accent-soft:#22332e; --warm:#e08862; --warm-soft:#3a241c;
+    --go:#7fc9a0; --go-soft:#1f3327; --caution:#e0b667; --caution-soft:#3a2f1a; --stop:#e08080; --stop-soft:#3a2020;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 20px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"]{
+    --bg:#faf6f0; --bg-elevated:#ffffff; --ink:#241f1a; --ink-soft:#5b5147; --ink-faint:#8a7f70;
+    --border:#e4dac9; --accent:#2f5d53; --accent-soft:#e4eeea; --warm:#b5482a; --warm-soft:#f5e4db;
+    --go:#3f7a5c; --go-soft:#e7f1ea; --caution:#a8760e; --caution-soft:#f6ebd8; --stop:#a63d3d; --stop-soft:#f5e1e0;
+    --shadow: 0 1px 2px rgba(36,31,26,0.06), 0 4px 16px rgba(36,31,26,0.05);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .doc{max-width:920px;margin:0 auto;padding:2.5rem 1.5rem 6rem;}
+
+  h1,h2,h3,h4{
+    font-family: Georgia, "Iowan Old Style", Charter, "Times New Roman", serif;
+    color:var(--ink);
+    text-wrap:balance;
+    margin:0;
+  }
+
+  /* ---------- Header ---------- */
+  .masthead{
+    display:flex; flex-direction:column; gap:.65rem;
+    padding-bottom:1.75rem; margin-bottom:1.75rem;
+    border-bottom:2px solid var(--border);
+  }
+  .eyebrow{
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--accent); font-weight:600;
+  }
+  .masthead h1{font-size:2.1rem; font-weight:600; line-height:1.15;}
+  .masthead .sub{color:var(--ink-soft); font-size:1.02rem; max-width:60ch;}
+  .profile-row{
+    display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.4rem;
+  }
+  .pill{
+    font-size:.82rem; padding:.28rem .7rem; border-radius:100px;
+    background:var(--bg-elevated); border:1px solid var(--border); color:var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Stat bar ---------- */
+  .stat-bar{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1px; background:var(--border);
+    border:1px solid var(--border); border-radius:12px; overflow:hidden;
+    margin-bottom:2rem;
+  }
+  .stat{
+    background:var(--bg-elevated); padding:.9rem 1rem;
+    display:flex; flex-direction:column; gap:.2rem;
+  }
+  .stat .label{font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint);}
+  .stat .value{font-size:1.15rem; font-weight:600; font-variant-numeric:tabular-nums; color:var(--accent);}
+
+  /* ---------- Section ---------- */
+  section{margin-bottom:2.75rem;}
+  .section-head{display:flex; align-items:baseline; gap:.6rem; margin-bottom:1rem;}
+  .section-head h2{font-size:1.4rem; font-weight:600;}
+  .section-num{
+    font-family: ui-monospace, monospace; font-size:.78rem; color:var(--ink-faint);
+    border:1px solid var(--border); border-radius:6px; padding:.15rem .45rem;
+  }
+  .section-desc{color:var(--ink-soft); font-size:.96rem; max-width:68ch; margin:0 0 1.1rem;}
+
+  /* ---------- Callouts ---------- */
+  .callout{
+    border-radius:10px; padding:1rem 1.15rem; border:1px solid;
+    display:flex; gap:.75rem; margin-bottom:.85rem;
+  }
+  .callout .dot{width:.6rem;height:.6rem;border-radius:50%;flex:none;margin-top:.4rem;}
+  .callout h4{font-size:.95rem; font-weight:700; margin-bottom:.3rem; font-family:inherit;}
+  .callout p, .callout ul{margin:0; font-size:.92rem; color:var(--ink-soft);}
+  .callout ul{padding-left:1.1rem;}
+  .callout li{margin-bottom:.15rem;}
+  .callout--stop{background:var(--stop-soft); border-color:var(--stop);}
+  .callout--stop h4{color:var(--stop);}
+  .callout--stop .dot{background:var(--stop);}
+  .callout--caution{background:var(--caution-soft); border-color:var(--caution);}
+  .callout--caution h4{color:var(--caution);}
+  .callout--caution .dot{background:var(--caution);}
+  .callout--go{background:var(--go-soft); border-color:var(--go);}
+  .callout--go h4{color:var(--go);}
+  .callout--go .dot{background:var(--go);}
+  .callout--info{background:var(--accent-soft); border-color:var(--accent);}
+  .callout--info h4{color:var(--accent);}
+  .callout--info .dot{background:var(--accent);}
+  .callout-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:.85rem;}
+
+  /* ---------- Tabs ---------- */
+  .tabbar{
+    display:flex; gap:.35rem; flex-wrap:wrap;
+    border-bottom:1px solid var(--border); padding-bottom:0; margin-bottom:1.25rem;
+  }
+  .tab-btn{
+    font-family:inherit; font-size:.88rem; font-weight:600; color:var(--ink-faint);
+    background:none; border:none; border-bottom:2px solid transparent;
+    padding:.55rem .2rem; margin-right:1.1rem; cursor:pointer;
+  }
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{color:var(--accent); border-bottom-color:var(--accent);}
+  .tab-btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:3px;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .day-tag{
+    font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--ink-faint);
+  }
+  .day-title{font-size:1.18rem; font-weight:600; margin:.15rem 0 1rem;}
+
+  /* ---------- Tables ---------- */
+  .table-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:10px; margin-bottom:1rem; background:var(--bg-elevated);}
+  table{width:100%; border-collapse:collapse; font-size:.9rem; min-width:520px;}
+  thead th{
+    text-align:left; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--ink-faint); font-weight:600; padding:.6rem .8rem; border-bottom:1px solid var(--border);
+  }
+  tbody td{padding:.62rem .8rem; border-bottom:1px solid var(--border); color:var(--ink-soft);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.num, th.num{font-variant-numeric:tabular-nums; font-family:ui-monospace,monospace; color:var(--ink);}
+  td.ex-name{color:var(--ink); font-weight:500;}
+  .flag{display:inline-flex; align-items:center; gap:.3rem; font-size:.78rem; color:var(--stop); font-weight:600;}
+  .flag::before{content:"⚠"; font-size:.85rem;}
+
+  .block-label{
+    font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--accent); margin:1.15rem 0 .5rem;
+  }
+  .note{font-size:.86rem; color:var(--ink-faint); margin-top:-.3rem; margin-bottom:.9rem;}
+
+  /* ---------- Meal cards ---------- */
+  .meal-slot{margin-bottom:1.3rem;}
+  .meal-slot-head{display:flex; align-items:center; gap:.5rem; margin-bottom:.55rem;}
+  .meal-slot-head h4{font-size:1rem; font-weight:600; font-family:inherit;}
+  .meal-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.7rem;}
+  .alt-card{
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:10px;
+    padding:.85rem .95rem; box-shadow:var(--shadow);
+  }
+  .alt-letter{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:1.4rem; height:1.4rem; border-radius:50%; background:var(--warm-soft); color:var(--warm);
+    font-size:.74rem; font-weight:700; margin-bottom:.5rem;
+  }
+  .alt-card ul{margin:0; padding-left:1.05rem; font-size:.87rem; color:var(--ink-soft);}
+  .alt-card li{margin-bottom:.15rem;}
+
+  /* ---------- Progression ---------- */
+  .prog-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:.85rem;}
+  .prog-card{
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:10px; padding:1rem;
+  }
+  .prog-card .wk{font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); font-weight:700;}
+  .prog-card .rir{font-size:1.5rem; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; margin:.25rem 0;}
+  .prog-card p{margin:0; font-size:.85rem; color:var(--ink-soft);}
+
+  /* ---------- Checklist ---------- */
+  .check-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.6rem;}
+  .check-item{
+    display:flex; align-items:center; gap:.55rem; background:var(--bg-elevated);
+    border:1px solid var(--border); border-radius:8px; padding:.6rem .75rem; font-size:.88rem; color:var(--ink-soft);
+  }
+  .check-item input{accent-color:var(--accent); width:1rem; height:1rem;}
+
+  footer{
+    margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);
+    font-size:.85rem; color:var(--ink-faint);
+  }
+  footer p{max-width:70ch; margin:0 0 .6rem;}
+  footer strong{color:var(--ink-soft);}
+
+  @media (max-width:600px){
+    .masthead h1{font-size:1.6rem;}
+    table{min-width:440px;}
+  }
+</style>
+
+<div class="doc">
+
+  <div class="masthead">
+    <span class="eyebrow">Programa individual · Protocolo columna cervical</span>
+    <h1>Reacondicionamiento con cuidado cervical</h1>
+    <p class="sub">Semana 1 de calibración — fuerza, movilidad y nutrición mexicana, diseñado alrededor de un antecedente de lesión cervical sin diagnóstico específico confirmado.</p>
+    <div class="profile-row">
+      <span class="pill">Mujer · 45 años</span>
+      <span class="pill">1.48 m · 65 kg</span>
+      <span class="pill">IMC ≈ 29.7</span>
+      <span class="pill">Entrena L–V · 7:00–8:30</span>
+      <span class="pill">Objetivo: oxidar grasa + estabilizar columna</span>
+    </div>
+  </div>
+
+  <div class="stat-bar">
+    <div class="stat"><span class="label">Calorías / día</span><span class="value">1,400–1,500 kcal</span></div>
+    <div class="stat"><span class="label">Proteína</span><span class="value">90–105 g</span></div>
+    <div class="stat"><span class="label">Grasas</span><span class="value">45–55 g</span></div>
+    <div class="stat"><span class="label">Agua</span><span class="value">1.8–2.2 L</span></div>
+    <div class="stat"><span class="label">Meta semanal</span><span class="value">-0.25 a -0.6 kg</span></div>
+  </div>
+
+  <!-- ================= SAFETY ================= -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Protocolo de seguridad cervical</h2>
+    </div>
+    <p class="section-desc">Se aplica antes, durante y después de cada sesión. Con una lesión cervical, la prioridad de la semana 1 no es la carga — es confirmar qué mueve sin compensar con el cuello.</p>
+
+    <div class="callout-grid">
+      <div class="callout callout--go">
+        <span class="dot"></span>
+        <div><h4>Continuar</h4>
+          <ul>
+            <li>Fatiga o ardor muscular normal</li>
+            <li>Sensación de esfuerzo controlado</li>
+            <li>Rigidez leve posterior al entreno</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout--caution">
+        <span class="dot"></span>
+        <div><h4>Reducir carga / modificar</h4>
+          <ul>
+            <li>Molestia que aparece durante el ejercicio</li>
+            <li>Dolor que crece serie tras serie</li>
+            <li>Rigidez marcada al terminar</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout--stop">
+        <span class="dot"></span>
+        <div><h4>Detener y evaluar</h4>
+          <ul>
+            <li>Dolor agudo u hormigueo</li>
+            <li>Dolor irradiado a brazo/mano</li>
+            <li>Mareo, debilidad o pérdida de equilibrio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--info" style="margin-top:.85rem;">
+      <span class="dot"></span>
+      <div>
+        <h4>Ejercicios fuera del programa por ahora</h4>
+        <p>Press militar/tras nuca, jalón tras nuca, sentadilla con barra sobre trapecios, peso muerto pesado, remo inclinado con barra libre, encogimientos pesados, crunch/sit-up, giros rusos, y cualquier ejercicio que obligue a extender o adelantar el cuello. Se reincorporan progresivamente solo si hay evaluación médica/fisioterapéutica favorable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRAINING ================= -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Rutina — semana de calibración</h2>
+    </div>
+    <p class="section-desc">Cada sesión cabe en 90 minutos: calentamiento, fuerza, cardio suave y cierre. La carga se busca con <strong>RIR</strong> (repeticiones en reserva), no con un peso fijo — ver sección 03.</p>
+
+    <div class="tabbar" data-group="train">
+      <button class="tab-btn active" data-tab="train-lun">Lunes</button>
+      <button class="tab-btn" data-tab="train-mar">Martes</button>
+      <button class="tab-btn" data-tab="train-mie">Miércoles</button>
+      <button class="tab-btn" data-tab="train-jue">Jueves</button>
+      <button class="tab-btn" data-tab="train-vie">Viernes</button>
+    </div>
+
+    <!-- LUNES -->
+    <div class="tab-panel active" id="train-lun">
+      <span class="day-tag">Día 1</span>
+      <h3 class="day-title">Tren inferior + glúteo</h3>
+      <div class="block-label">Calentamiento — 10 min</div>
+      <p class="note">Caminadora 5 min · movilidad de tobillo y cadera 10 rep · marcha controlada 2 min. Cabeza en posición neutra en todo momento.</p>
+      <div class="block-label">Fuerza — objetivo RIR 3–4</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ejercicio</th><th class="num">Series</th><th class="num">Reps</th><th>Nota cervical</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Prensa de piernas</td><td class="num">2</td><td class="num">10</td><td>Espalda y cabeza apoyadas en el respaldo</td></tr>
+            <tr><td class="ex-name">Curl femoral</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+            <tr><td class="ex-name">Extensión de cuádriceps</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+            <tr><td class="ex-name">Abducción de cadera</td><td class="num">2</td><td class="num">15</td><td>—</td></tr>
+            <tr><td class="ex-name">Puente de glúteo</td><td class="num">2</td><td class="num">12</td><td>Nuca relajada, sin empujar con el cuello</td></tr>
+            <tr><td class="ex-name">Elevación de pantorrilla</td><td class="num">2</td><td class="num">15</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="block-label">Core</div>
+      <p class="note">Dead bug modificado · 2 × 5 por lado — cabeza y cuello apoyados y relajados en todo momento; si aparece molestia cervical, se retira.</p>
+      <div class="block-label">Cardio de cierre</div>
+      <p class="note">10–15 min caminata a ritmo conversacional.</p>
+    </div>
+
+    <!-- MARTES -->
+    <div class="tab-panel" id="train-mar">
+      <span class="day-tag">Día 2</span>
+      <h3 class="day-title">Espalda + pecho + brazos</h3>
+      <p class="note">Día de mayor riesgo cervical — priorizar máquinas con apoyo sobre movimientos libres.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ejercicio</th><th class="num">Series</th><th class="num">Reps</th><th>Nota cervical</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Press de pecho en máquina</td><td class="num">2</td><td class="num">10</td><td>Cabeza apoyada contra el respaldo</td></tr>
+            <tr><td class="ex-name">Remo sentado con apoyo de pecho</td><td class="num">2</td><td class="num">10</td><td>El apoyo de pecho evita compensar con el cuello</td></tr>
+            <tr><td class="ex-name">Jalón al pecho</td><td class="num">2</td><td class="num">10</td><td><span class="flag">nunca detrás de la cabeza</span></td></tr>
+            <tr><td class="ex-name">Curl de bíceps sentado</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+            <tr><td class="ex-name">Extensión de tríceps en polea</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Elevaciones laterales: se dejan fuera esta semana si tiende a subir los hombros hacia las orejas al hacerlas. Se reincorporan en semana 2 con muy poco peso si no hay compensación.</p>
+      <div class="block-label">Cardio de cierre</div>
+      <p class="note">10–15 min caminata.</p>
+    </div>
+
+    <!-- MIERCOLES -->
+    <div class="tab-panel" id="train-mie">
+      <span class="day-tag">Día 3</span>
+      <h3 class="day-title">Recuperación activa</h3>
+      <p class="note">No es un día de gimnasio pesado — el objetivo es circulación, movilidad y respiración, a intensidad que permita conversar.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Actividad</th><th class="num">Duración</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Caminata</td><td class="num">15–20 min</td></tr>
+            <tr><td class="ex-name">Bicicleta estática (si es cómoda)</td><td class="num">10–15 min</td></tr>
+            <tr><td class="ex-name">Movilidad de cadera y torácica</td><td class="num">5 min</td></tr>
+            <tr><td class="ex-name">Respiración diafragmática</td><td class="num">5 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- JUEVES -->
+    <div class="tab-panel" id="train-jue">
+      <span class="day-tag">Día 4</span>
+      <h3 class="day-title">Pierna + glúteo</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ejercicio</th><th class="num">Series</th><th class="num">Reps</th><th>Nota cervical</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Prensa de piernas</td><td class="num">2</td><td class="num">10</td><td>Espalda y cabeza apoyadas</td></tr>
+            <tr><td class="ex-name">Curl femoral</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+            <tr><td class="ex-name">Extensión de cuádriceps</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+            <tr><td class="ex-name">Abducción de cadera</td><td class="num">2</td><td class="num">15</td><td>—</td></tr>
+            <tr><td class="ex-name">Puente de glúteo</td><td class="num">2</td><td class="num">12</td><td>Nuca relajada</td></tr>
+            <tr><td class="ex-name">Elevación de pantorrilla</td><td class="num">2</td><td class="num">15</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="block-label">Core</div>
+      <p class="note">Bird-dog modificado · 2 × 5 por lado, movimiento muy lento y controlado.</p>
+    </div>
+
+    <!-- VIERNES -->
+    <div class="tab-panel" id="train-vie">
+      <span class="day-tag">Día 5</span>
+      <h3 class="day-title">Cuerpo completo</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ejercicio</th><th class="num">Series</th><th class="num">Reps</th><th>Nota cervical</th></tr></thead>
+          <tbody>
+            <tr><td class="ex-name">Press de pecho en máquina</td><td class="num">2</td><td class="num">10</td><td>Cabeza apoyada</td></tr>
+            <tr><td class="ex-name">Remo con apoyo de pecho</td><td class="num">2</td><td class="num">10</td><td>—</td></tr>
+            <tr><td class="ex-name">Prensa de piernas</td><td class="num">2</td><td class="num">10</td><td>—</td></tr>
+            <tr><td class="ex-name">Curl femoral</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+            <tr><td class="ex-name">Abducción de cadera</td><td class="num">2</td><td class="num">15</td><td>—</td></tr>
+            <tr><td class="ex-name">Curl de bíceps</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+            <tr><td class="ex-name">Tríceps en polea</td><td class="num">2</td><td class="num">12</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="block-label">Cierre de semana</div>
+      <p class="note">15–20 min caminata suave. Registrar medidas y sensaciones — ver checklist en sección 05.</p>
+    </div>
+  </section>
+
+  <!-- ================= RIR ================= -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Cómo calibrar el peso: RIR</h2>
+    </div>
+    <p class="section-desc">RIR = repeticiones en reserva. Después de la última repetición de una serie, ¿cuántas más habría podido hacer con buena técnica? Esa cifra guía si sube, baja o mantiene el peso — no una tabla genérica.</p>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <span class="wk">Semana 1</span>
+        <div class="rir">RIR 3–4</div>
+        <p>Encontrar el peso, no el límite. Técnica perfecta, sin compensación de cuello ni hombros.</p>
+      </div>
+      <div class="prog-card">
+        <span class="wk">Semana 2</span>
+        <div class="rir">RIR 2–3</div>
+        <p>Solo si no hubo molestia cervical ni lumbar en semana 1.</p>
+      </div>
+      <div class="prog-card">
+        <span class="wk">Semana 3+</span>
+        <div class="rir">RIR 1–2</div>
+        <p>Únicamente en los ejercicios ya confirmados como seguros y bien tolerados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NUTRITION ================= -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Alimentación — semana 1</h2>
+    </div>
+    <p class="section-desc">Comida mexicana de todos los días, sin eliminar tortilla, frijol, arroz ni fruta. Cada día: elegir <strong>una</strong> opción de pre-entreno + <strong>una</strong> de desayuno + <strong>una</strong> de comida + <strong>una</strong> de cena. Las alternativas existen para variar, no para comerse todas.</p>
+
+    <div class="block-label">Pre-entreno · 6:20–6:40 (aplica cualquier día)</div>
+    <div class="meal-grid" style="margin-bottom:1.5rem;">
+      <div class="alt-card"><span class="alt-letter">A</span><ul><li>½ plátano</li><li>Café sin azúcar</li></ul></div>
+      <div class="alt-card"><span class="alt-letter">B</span><ul><li>1 manzana o mandarina</li><li>Café sin azúcar</li></ul></div>
+      <div class="alt-card"><span class="alt-letter">C</span><ul><li>½ taza de papaya</li><li>Café sin azúcar</li></ul></div>
+    </div>
+
+    <div class="tabbar" data-group="food">
+      <button class="tab-btn active" data-tab="food-lun">Lunes</button>
+      <button class="tab-btn" data-tab="food-mar">Martes</button>
+      <button class="tab-btn" data-tab="food-mie">Miércoles</button>
+      <button class="tab-btn" data-tab="food-jue">Jueves</button>
+      <button class="tab-btn" data-tab="food-vie">Viernes</button>
+    </div>
+
+    <!-- LUNES -->
+    <div class="tab-panel active" id="food-lun">
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>2 huevos + 2 claras</li><li>2 tortillas de maíz</li><li>Frijoles, salsa, papaya</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Avena con leche descremada</li><li>Plátano, canela</li><li>1 huevo + 2 claras</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Chilaquiles ligeros (tortilla horneada)</li><li>Salsa roja, pollo deshebrado</li><li>Queso fresco</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Comida · 13:30–14:30</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Pechuga de pollo asada</li><li>½ taza de arroz</li><li>Frijoles, ensalada</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Bistec de res</li><li>2 tortillas</li><li>Nopales, frijoles</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Pescado a la mexicana</li><li>Arroz</li><li>Ensalada</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Cena · 18:00–19:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>2 quesadillas de maíz</li><li>Queso panela, champiñones</li><li>Salsa</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Tostadas horneadas</li><li>Pollo, lechuga</li><li>Frijoles</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Ensalada con atún</li><li>Verduras</li><li>2 tortillas</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARTES -->
+    <div class="tab-panel" id="food-mar">
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Huevos a la mexicana</li><li>2 tortillas</li><li>Frijoles</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Molletes ligeros (pan integral)</li><li>Frijoles, queso panela</li><li>Pico de gallo</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Yogur griego natural</li><li>Avena, fresas</li><li>Canela</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Comida · 13:30–14:30</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Pollo en salsa verde</li><li>Arroz</li><li>Calabacitas</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Carne de res con nopales</li><li>2 tortillas</li><li>Frijoles</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Filete de pescado</li><li>Papa cocida</li><li>Ensalada</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Cena · 18:00–19:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Omelette de verduras</li><li>Queso panela</li><li>2 tortillas</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Tacos de pollo</li><li>2–3 tortillas</li><li>Lechuga, salsa</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Ensalada de atún</li><li>Aguacate</li><li>2 tostadas horneadas</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIERCOLES -->
+    <div class="tab-panel" id="food-mie">
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Huevos con nopales</li><li>Frijoles</li><li>2 tortillas</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Avena, leche descremada</li><li>Manzana, canela</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Yogur griego</li><li>Plátano, avena</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Comida · 13:30–14:30</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Tinga de pollo</li><li>2–3 tortillas</li><li>Frijoles, ensalada</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Carne asada</li><li>Nopales, 2 tortillas</li><li>Aguacate</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Pescado a la plancha</li><li>Arroz</li><li>Verduras</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Cena · 18:00–19:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Quesadillas de champiñones</li><li>Queso panela</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Ensalada de pollo</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Huevos revueltos con verduras</li><li>Tortillas</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JUEVES -->
+    <div class="tab-panel" id="food-jue">
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Huevos con jamón de pavo</li><li>2 tortillas</li><li>Frijoles</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Avena, plátano, canela</li><li>2 claras + 1 huevo</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Chilaquiles con pollo</li><li>Salsa verde, queso fresco</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Comida · 13:30–14:30</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Pollo en mole ligero</li><li>Arroz, ensalada</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Picadillo de res con verduras</li><li>2 tortillas</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Pescado al ajo</li><li>Papa, ensalada</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Cena · 18:00–19:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Tacos de pollo con nopales</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Ensalada de atún</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Omelette de champiñones</li><li>Queso panela</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIERNES -->
+    <div class="tab-panel" id="food-vie">
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Desayuno · 9:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Huevos a la mexicana</li><li>Frijoles, 2 tortillas</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Yogur griego, avena</li><li>Fresas, plátano</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Quesadillas de pollo</li><li>Salsa, pico de gallo</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Comida · 13:30–14:30</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Fajitas de pollo</li><li>Pimientos, 2 tortillas</li><li>Frijoles</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Carne de res</li><li>Nopales, arroz</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Pescado empapelado</li><li>Arroz, verduras</li></ul></div>
+        </div>
+      </div>
+      <div class="meal-slot">
+        <div class="meal-slot-head"><h4>Cena · 18:00–19:00</h4></div>
+        <div class="meal-grid">
+          <div class="alt-card"><span class="alt-letter">A</span><ul><li>Tostadas de pollo</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">B</span><ul><li>Omelette de verduras</li></ul></div>
+          <div class="alt-card"><span class="alt-letter">C</span><ul><li>Quesadillas de panela</li><li>Champiñones</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRACKING ================= -->
+  <section>
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Registro semanal</h2>
+    </div>
+    <p class="section-desc">Cada lunes por la mañana, antes de entrenar. La báscula sola no cuenta la historia completa.</p>
+    <div class="check-grid">
+      <label class="check-item"><input type="checkbox"> Peso</label>
+      <label class="check-item"><input type="checkbox"> Cintura / abdomen</label>
+      <label class="check-item"><input type="checkbox"> Cadera / muslo</label>
+      <label class="check-item"><input type="checkbox"> Fotos (frontal, lateral, posterior)</label>
+      <label class="check-item"><input type="checkbox"> Energía y sueño</label>
+      <label class="check-item"><input type="checkbox"> Dolor / movilidad cervical</label>
+      <label class="check-item"><input type="checkbox"> Pesos usados por ejercicio</label>
+      <label class="check-item"><input type="checkbox"> RIR real vs. objetivo</label>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Antes de avanzar a la semana 2:</strong> este programa asume una lesión cervical antigua sin síntomas activos. Si actualmente hay dolor que baja al hombro o brazo, hormigueo, adormecimiento, pérdida de fuerza, mareo o dolores de cabeza relacionados con el cuello, el programa debe pausarse y pasar primero por valoración médica o de fisioterapia — no se debe entrenar a través de síntomas neurológicos.</p>
+    <p>Diagnóstico exacto (hernia, latigazo, compresión nerviosa, cirugía, degeneración) permite afinar qué ejercicios reincorporar en la semana 2 y cuáles mantener fuera de forma permanente.</p>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.tabbar').forEach(function(bar){
+    var group = bar.dataset.group;
+    bar.querySelectorAll('.tab-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        bar.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var panels = document.querySelectorAll('.tab-panel');
+        panels.forEach(function(p){
+          if (p.closest('section').contains(bar)) {
+            p.classList.toggle('active', p.id === btn.dataset.tab);
+          }
+        });
+      });
+    });
+  });
+</script>
