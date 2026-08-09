@@ -1,4 +1,4 @@
-<title>Programa de Reacondicionamiento — Protocolo Cervical</title>
+<title>Precondicionamiento Jenny</title>
 <style>
   :root{
     --bg:#fff6f2;
@@ -300,32 +300,111 @@
     .masthead h1{font-size:1.6rem;}
     table{min-width:440px;}
   }
+
+  /* ---------- Page nav ---------- */
+  .pagenav{
+    position:sticky; top:0; z-index:10;
+    display:flex; gap:.5rem; flex-wrap:wrap;
+    background:var(--bg); padding:1rem 0 1rem;
+    margin-bottom:.5rem;
+  }
+  .page-btn{
+    font-family:inherit; font-size:.86rem; font-weight:800; color:var(--ink-soft);
+    background:var(--bg-elevated); border:1.5px solid var(--border); border-radius:100px;
+    padding:.55rem 1.2rem; cursor:pointer; box-shadow:var(--shadow);
+  }
+  .page-btn:hover{color:var(--ink);}
+  .page-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .page-btn.active{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .page-btn[data-page="page-nutricion"].active{background:var(--warm); border-color:var(--warm);}
+  .page-btn[data-page="page-suplementos"].active{background:var(--violet); border-color:var(--violet);}
+  .page{display:none;}
+  .page.active{display:block;}
+
+  /* ---------- Cover links ---------- */
+  .cover-links{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1rem;
+    margin-bottom:1rem;
+  }
+  .cover-card{
+    text-align:left; font-family:inherit; cursor:pointer;
+    background:var(--bg-elevated); border:1px solid var(--border); border-top:4px solid var(--accent);
+    border-radius:18px; padding:1.3rem 1.4rem; box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:.4rem;
+    transition:transform .15s ease;
+  }
+  .cover-card:hover{transform:translateY(-3px);}
+  .cover-card:focus-visible{outline:2px solid var(--ink); outline-offset:2px;}
+  .cover-card h3{font-size:1.12rem; font-weight:800; color:var(--ink);}
+  .cover-card p{margin:0; font-size:.88rem; color:var(--ink-soft); flex:1;}
+  .cover-eyebrow{
+    font-family: ui-monospace, monospace; font-size:.72rem; font-weight:700; letter-spacing:.06em;
+    color:var(--ink-faint);
+  }
+  .cover-go{font-size:.86rem; font-weight:800;}
+  .cover-card--pink{border-top-color:var(--accent);} .cover-card--pink .cover-go{color:var(--accent);}
+  .cover-card--orange{border-top-color:var(--warm);} .cover-card--orange .cover-go{color:var(--warm);}
+  .cover-card--violet{border-top-color:var(--violet);} .cover-card--violet .cover-go{color:var(--violet);}
 </style>
 
 <div class="doc">
 
-  <div class="masthead">
-    <div class="masthead-inner">
-      <span class="eyebrow">Programa individual · Protocolo columna cervical</span>
-      <h1>Reacondicionamiento con cuidado cervical</h1>
-      <p class="sub">Semana 1 de calibración — fuerza, movilidad y nutrición mexicana, diseñado alrededor de un antecedente de lesión cervical sin diagnóstico específico confirmado.</p>
-      <div class="profile-row">
-        <span class="pill">Mujer · 45 años</span>
-        <span class="pill">1.48 m · 65 kg</span>
-        <span class="pill">IMC ≈ 29.7</span>
-        <span class="pill">Entrena L–V · 7:00–8:30</span>
-        <span class="pill">Objetivo: oxidar grasa + estabilizar columna</span>
+  <nav class="pagenav">
+    <button class="page-btn active" data-page="page-portada">Portada</button>
+    <button class="page-btn" data-page="page-rutina">Rutina</button>
+    <button class="page-btn" data-page="page-nutricion">Nutrición</button>
+    <button class="page-btn" data-page="page-suplementos">Suplementos</button>
+  </nav>
+
+  <!-- ================= PORTADA ================= -->
+  <div class="page active" id="page-portada">
+    <div class="masthead">
+      <div class="masthead-inner">
+        <span class="eyebrow">Programa individual · Protocolo columna cervical</span>
+        <h1>Precondicionamiento Jenny</h1>
+        <p class="sub">Semana 1 de calibración — fuerza, movilidad y nutrición mexicana, diseñado alrededor de un antecedente de lesión cervical sin diagnóstico específico confirmado.</p>
+        <div class="profile-row">
+          <span class="pill">Mujer · 45 años</span>
+          <span class="pill">1.48 m · 65 kg</span>
+          <span class="pill">IMC ≈ 29.7</span>
+          <span class="pill">Entrena L–V · 7:00–8:30</span>
+          <span class="pill">Objetivo: oxidar grasa + estabilizar columna</span>
+        </div>
       </div>
+    </div>
+
+    <div class="stat-bar">
+      <div class="stat"><span class="label">Calorías / día</span><span class="value">1,400–1,500 kcal</span></div>
+      <div class="stat"><span class="label">Proteína</span><span class="value">90–105 g</span></div>
+      <div class="stat"><span class="label">Grasas</span><span class="value">45–55 g</span></div>
+      <div class="stat"><span class="label">Agua</span><span class="value">1.8–2.2 L</span></div>
+      <div class="stat"><span class="label">Meta semanal</span><span class="value">-0.25 a -0.6 kg</span></div>
+    </div>
+
+    <div class="cover-links">
+      <button class="cover-card cover-card--pink" data-page="page-rutina">
+        <span class="cover-eyebrow">01</span>
+        <h3>Rutina de entrenamiento</h3>
+        <p>Protocolo de seguridad cervical, calibración de fuerza L–V y guía de RIR.</p>
+        <span class="cover-go">Ver rutina →</span>
+      </button>
+      <button class="cover-card cover-card--orange" data-page="page-nutricion">
+        <span class="cover-eyebrow">02</span>
+        <h3>Nutrición</h3>
+        <p>Comida mexicana de siempre, con 3 alternativas por comida cada día.</p>
+        <span class="cover-go">Ver plan de comidas →</span>
+      </button>
+      <button class="cover-card cover-card--violet" data-page="page-suplementos">
+        <span class="cover-eyebrow">03</span>
+        <h3>Suplementos</h3>
+        <p>Kit de inicio ordenado por prioridad, con marcas y presentaciones grandes.</p>
+        <span class="cover-go">Ver kit →</span>
+      </button>
     </div>
   </div>
 
-  <div class="stat-bar">
-    <div class="stat"><span class="label">Calorías / día</span><span class="value">1,400–1,500 kcal</span></div>
-    <div class="stat"><span class="label">Proteína</span><span class="value">90–105 g</span></div>
-    <div class="stat"><span class="label">Grasas</span><span class="value">45–55 g</span></div>
-    <div class="stat"><span class="label">Agua</span><span class="value">1.8–2.2 L</span></div>
-    <div class="stat"><span class="label">Meta semanal</span><span class="value">-0.25 a -0.6 kg</span></div>
-  </div>
+  <!-- ================= PÁGINA RUTINA ================= -->
+  <div class="page" id="page-rutina">
 
   <!-- ================= SAFETY ================= -->
   <section>
@@ -529,10 +608,32 @@
     </div>
   </section>
 
-  <!-- ================= NUTRITION ================= -->
+  <!-- ================= TRACKING ================= -->
   <section>
     <div class="section-head">
       <span class="section-num">04</span>
+      <h2>Registro semanal</h2>
+    </div>
+    <p class="section-desc">Cada lunes por la mañana, antes de entrenar. La báscula sola no cuenta la historia completa.</p>
+    <div class="check-grid">
+      <label class="check-item"><input type="checkbox"> Peso</label>
+      <label class="check-item"><input type="checkbox"> Cintura / abdomen</label>
+      <label class="check-item"><input type="checkbox"> Cadera / muslo</label>
+      <label class="check-item"><input type="checkbox"> Fotos (frontal, lateral, posterior)</label>
+      <label class="check-item"><input type="checkbox"> Energía y sueño</label>
+      <label class="check-item"><input type="checkbox"> Dolor / movilidad cervical</label>
+      <label class="check-item"><input type="checkbox"> Pesos usados por ejercicio</label>
+      <label class="check-item"><input type="checkbox"> RIR real vs. objetivo</label>
+    </div>
+  </section>
+
+  </div>
+  <!-- ================= PÁGINA NUTRICIÓN ================= -->
+  <div class="page" id="page-nutricion">
+
+  <!-- ================= NUTRITION ================= -->
+  <section>
+    <div class="section-head">
       <h2>Alimentación — semana 1</h2>
     </div>
     <p class="section-desc">Comida mexicana de todos los días, sin eliminar tortilla, frijol, arroz ni fruta. Cada día: elegir <strong>una</strong> opción de pre-entreno + <strong>una</strong> de desayuno + <strong>una</strong> de comida + <strong>una</strong> de cena. Las alternativas existen para variar, no para comerse todas.</p>
@@ -693,10 +794,13 @@
     </div>
   </section>
 
+  </div>
+  <!-- ================= PÁGINA SUPLEMENTOS ================= -->
+  <div class="page" id="page-suplementos">
+
   <!-- ================= SUPPLEMENTS ================= -->
   <section>
     <div class="section-head">
-      <span class="section-num">05</span>
       <h2>Kit de inicio de suplementación</h2>
     </div>
     <p class="section-desc">Ningún suplemento sustituye la comida real ni el déficit calórico — son ayuda, no la base. Orden de prioridad: si el presupuesto o el paladar obligan a elegir, se empieza arriba de la lista y se agrega hacia abajo.</p>
@@ -818,24 +922,7 @@
     <p class="note" style="margin-top:.6rem;">Precios y presentaciones cambian con frecuencia — confirmar en tienda antes de comprar. Esto no sustituye valoración de un nutriólogo en consulta ni la revisión médica pendiente por la lesión cervical.</p>
   </section>
 
-  <!-- ================= TRACKING ================= -->
-  <section>
-    <div class="section-head">
-      <span class="section-num">06</span>
-      <h2>Registro semanal</h2>
-    </div>
-    <p class="section-desc">Cada lunes por la mañana, antes de entrenar. La báscula sola no cuenta la historia completa.</p>
-    <div class="check-grid">
-      <label class="check-item"><input type="checkbox"> Peso</label>
-      <label class="check-item"><input type="checkbox"> Cintura / abdomen</label>
-      <label class="check-item"><input type="checkbox"> Cadera / muslo</label>
-      <label class="check-item"><input type="checkbox"> Fotos (frontal, lateral, posterior)</label>
-      <label class="check-item"><input type="checkbox"> Energía y sueño</label>
-      <label class="check-item"><input type="checkbox"> Dolor / movilidad cervical</label>
-      <label class="check-item"><input type="checkbox"> Pesos usados por ejercicio</label>
-      <label class="check-item"><input type="checkbox"> RIR real vs. objetivo</label>
-    </div>
-  </section>
+  </div>
 
   <footer>
     <p><strong>Antes de avanzar a la semana 2:</strong> este programa asume una lesión cervical antigua sin síntomas activos. Si actualmente hay dolor que baja al hombro o brazo, hormigueo, adormecimiento, pérdida de fuerza, mareo o dolores de cabeza relacionados con el cuello, el programa debe pausarse y pasar primero por valoración médica o de fisioterapia — no se debe entrenar a través de síntomas neurológicos.</p>
@@ -846,7 +933,6 @@
 
 <script>
   document.querySelectorAll('.tabbar').forEach(function(bar){
-    var group = bar.dataset.group;
     bar.querySelectorAll('.tab-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
         bar.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -859,5 +945,18 @@
         });
       });
     });
+  });
+
+  function goToPage(pageId){
+    document.querySelectorAll('.page').forEach(function(p){
+      p.classList.toggle('active', p.id === pageId);
+    });
+    document.querySelectorAll('.page-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.page === pageId);
+    });
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  document.querySelectorAll('.page-btn, .cover-card').forEach(function(el){
+    el.addEventListener('click', function(){ goToPage(el.dataset.page); });
   });
 </script>
