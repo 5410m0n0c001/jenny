@@ -1062,6 +1062,19 @@
     window.scrollTo({top:0, behavior:'instant'});
   }
   document.querySelectorAll('.page-btn, .cover-card').forEach(function(el){
-    el.addEventListener('click', function(){ goToPage(el.dataset.page); });
+    el.addEventListener('click', function(){
+      var pageId = el.dataset.page;
+      goToPage(pageId);
+      history.pushState(null, '', '#' + pageId.replace('page-', ''));
+    });
   });
+
+  function syncPageFromHash(){
+    var slug = location.hash.replace('#', '');
+    var pageId = slug ? 'page-' + slug : 'page-portada';
+    if (!document.getElementById(pageId)) pageId = 'page-portada';
+    goToPage(pageId);
+  }
+  window.addEventListener('hashchange', syncPageFromHash);
+  syncPageFromHash();
 </script>
